@@ -1,0 +1,31 @@
+/* src/components/GameBoard.css */
+
+.game-board {
+  width: 80vw;
+  display: grid;
+  /* Kľúč: Flexibilná šírka stĺpcov od 80px do 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(12vw, 1fr));
+  gap: 10px;
+  padding: 15px;
+  background: #fff; /* LIGHT MODE */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+/* !!! MANUÁLNY DARK MODE !!! */
+.dark-mode .game-board {
+  background: #1e1e1e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- RESPONZIVITA (Malé Mobily) --- */
+@media (max-width: 640px) {
+  .game-board {
+    /* Pre veľmi malé obrazovky zmenšíme minimálnu šírku karty */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 0;
+    width: 90vw;
+  }
+}

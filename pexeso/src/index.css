@@ -1,0 +1,40 @@
+/* src/index.css */
+:root {
+  width: 100vw;
+}
+/* 1. Global Reset a Box Model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Základný Štýl Tela (LIGHT MODE / DEFAULT) */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef3f8; /* Svetlé pozadie */
+  color: #333; /* Tmavý text */
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background-color 0.3s, color 0.3s; /* Plynulý prechod */
+  user-select: none;
+}
+
+/* 3. Tlačidlá (Všeobecné) */
+button {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* ======================================================= */
+/* !!! MANUÁLNY DARK MODE !!! */
+/* ======================================================= */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}

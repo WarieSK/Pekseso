@@ -1,0 +1,79 @@
+/* src/components/Card.css (2D Verzia) */
+
+.card {
+  width: 100%;
+  padding-top: 100%; /* Karta je vždy štvorec */
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s;
+  overflow: hidden;
+}
+
+.matched-card {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+/* --- ŠTÝLY PRE NEOTOČENÚ KARTU (RUB - LIGHT MODE) --- */
+.card.unflipped .card-content {
+  background-color: #4a148c;
+  color: white;
+  border: 4px solid #1a237e;
+}
+
+.card-back-symbol {
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- ŠTÝLY PRE OTOČENÚ KARTU (LÍC/OBRÁZOK) --- */
+.card.flipped .card-content {
+  background-color: white;
+  padding: 2px;
+}
+
+.card-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ======================================================= */
+/* !!! MANUÁLNY DARK MODE !!! */
+/* ======================================================= */
+
+.dark-mode .card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .card.unflipped .card-content {
+  background-color: #3700b3;
+  border: 4px solid #1e1e1e;
+}
+
+.dark-mode .card.flipped .card-content {
+  background-color: #121212;
+}
+
+/* --- RESPONZIVITA (Mobily) --- */
+@media (max-width: 600px) {
+  .card-back-symbol {
+    font-size: 2em;
+  }
+}

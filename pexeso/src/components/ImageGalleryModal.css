@@ -1,0 +1,242 @@
+/* src/components/ImageGallery.css */
+
+/* --- Modálne správanie (Galéria) --- */
+.image-gallery-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Mierne svetlejšie pozadie ako predtým, ale stále tmavé */
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.image-gallery-modal-content {
+  /* Svetlejší, čistejší vzhľad pre Light Mode */
+  background: #f7f7f7;
+  padding: 30px 20px; /* Väčšie vertikálne odsadenie */
+  border-radius: 16px; /* Jemnejšie rohy */
+  max-width: 1100px; /* Väčšia galéria pre desktop */
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Výraznejší tieň */
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Lepšia animácia */
+  position: relative;
+}
+
+/* Hlavička */
+.image-gallery-modal-content h2 {
+  color: #4a148c; /* Farba témy (purpurová) */
+  font-size: 2.2em; /* Väčší nadpis */
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.image-gallery-modal-content p {
+  color: #757575;
+  margin-bottom: 30px; /* Väčší odstup od gridu */
+  font-style: normal;
+  font-size: 0.95em;
+}
+
+/* Zatváracie tlačidlo */
+.gallery-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.5em; /* Väčšie X */
+  line-height: 1;
+  color: #a0a0a0; /* Jemnejšia farba */
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.gallery-close-btn:hover {
+  color: #e53935; /* Červený hover */
+}
+
+/* --- GRID PRE OBRÁZKY (VYLEPŠENÉ) --- */
+
+.image-gallery-grid {
+  /* Responzívny grid, min 120px šírka */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px; /* Väčšie medzery */
+  padding: 10px;
+}
+
+.gallery-card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  border-radius: 8px; /* Jemné rohy */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Jemný tieň */
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Interaktívny hover efekt */
+.gallery-card:hover {
+  transform: scale(1.03); /* Mierne zväčšenie */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Výraznejší tieň */
+}
+
+.gallery-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Odstránený transform na img, nech je len na card, aby bol efekt plynulejší */
+}
+
+/* ======================================================= */
+/* !!! VYLEPŠENÝ DARK MODE !!! */
+/* ======================================================= */
+
+.dark-mode .image-gallery-modal-content {
+  background-color: #1e1e1e; /* Tmavé pozadie */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .gallery-close-btn {
+  color: #bdbdbd;
+}
+
+.dark-mode .gallery-close-btn:hover {
+  color: #cf6679; /* Sekundárna dark mode farba */
+}
+
+.dark-mode .image-gallery-modal-content h2 {
+  color: #bb86fc; /* Primárna dark mode farba */
+}
+
+.dark-mode .image-gallery-modal-content p {
+  color: #a0a0a0;
+}
+
+.dark-mode .gallery-card {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .gallery-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ======================================================= */
+/* !!! LIGHTBOX ŠTÝLY (Bezo zmeny, sú funkčné) !!! */
+/* ======================================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.5em;
+  line-height: 1;
+  color: #333;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close-btn:hover {
+  background-color: #e53935;
+  color: white;
+}
+
+/* --- LIGHTBOX DARK MODE --- */
+.dark-mode .lightbox-content {
+  background-color: #121212;
+}
+
+.dark-mode .lightbox-close-btn {
+  background-color: #bb86fc;
+  color: #121212;
+}
+
+.dark-mode .lightbox-close-btn:hover {
+  background-color: #cf6679;
+  color: #fff;
+}
+
+/* --- ANIMÁCIE --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- RESPONZIVITA GRIDU (vylepšená) --- */
+@media (max-width: 900px) {
+  .image-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .image-gallery-modal-content {
+    padding: 20px 10px;
+  }
+  .image-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+  }
+  .image-gallery-modal-content h2 {
+    font-size: 1.8em;
+  }
+}

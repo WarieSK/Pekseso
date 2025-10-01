@@ -1,0 +1,88 @@
+/* src/components/ThemeSwitch.css */
+
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  margin-bottom: -10px;
+  user-select: none;
+
+  .mode-text {
+    font-size: 0.9em;
+    color: #4a148c;
+    margin-left: 10px;
+    transition: color 0.3s;
+  }
+
+  /* Kontajner pre prepínač */
+  .switch-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  /* Skrytie defaultného checkboxu */
+  .switch-label input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* Posuvník (slider) - LIGHT MODE */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+  }
+
+  /* DARK MODE štýl posuvníka (zapnutý) */
+  input:checked + .slider {
+    background-color: #4a148c;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  /* Zaoblený tvar */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* --- VIZUÁLNE ÚPRAVY DARK MODE (pre text) --- */
+  .dark-mode .mode-text {
+    color: #bb86fc;
+  }
+
+  /* Zmena farby prepínača v Dark Mode, ak je vypnutý (pre lepšiu viditeľnosť) */
+  .dark-mode .switch-label input:not(:checked) + .slider {
+    background-color: #555;
+  }
+
+  /* Zmena farby prepínača v Dark Mode, ak je zapnutý */
+  .dark-mode .switch-label input:checked + .slider {
+    background-color: #bb86fc;
+  }
+}
